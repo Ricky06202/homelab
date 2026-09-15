@@ -1,0 +1,9 @@
+services:
+  metube:
+    image: ghcr.io/alexta69/metube:latest
+    container_name: metube
+    volumes:
+      - /mnt/Download/descargas/metube:/downloads
+    ports:
+      - "8085:8081"
+    restart: unless-stopped

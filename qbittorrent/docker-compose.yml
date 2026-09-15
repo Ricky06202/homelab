@@ -1,0 +1,16 @@
+services:
+  qbittorrent:
+    image: ghcr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Montevideo
+    volumes:
+      - ./config:/config
+      - /mnt/Download/descargas:/downloads
+    ports:
+      - "8086:8086"
+      - "6881:6881"
+      - "6881:6881/udp"
+    restart: unless-stopped

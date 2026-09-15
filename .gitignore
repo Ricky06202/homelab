@@ -1,0 +1,36 @@
+# ⚠️ NUNCA al repo: secretos + datos de los contenedores (se regeneran al levantar)
+# copias de datos runtime
+**/config/
+**/data/
+**/descargas/
+**/downloads/
+**/download/
+**/*/html/
+**/work/
+**/imbed/
+**/.cache/
+**/logs/
+
+# archivos sueltos con claves/contraseñas
+.env
+**/.env
+.env.*
+!.env.example
+**/ts.env
+**/AdGuardHome.yaml
+**/*.log
+**/*.db
+**/*.sqlite
+**/*.pid
+**/*.socket
+**/config.json
+**/*.conf
+**/*.key
+**/*.pem
+**/*.crt
+
+# basura de editor/SO
+.DS_Store
+*.swp
+*.tmp
+*~

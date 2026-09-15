@@ -1,0 +1,14 @@
+services:
+  navidrome:
+    image: deluan/navidrome:latest
+    container_name: navidrome
+    environment:
+      - ND_SCANSCHEDULER=1h
+      - ND_LOGLEVEL=info
+      - ND_BASEURL=
+    volumes:
+      - ./data:/data
+      - /mnt/Datos/musica:/music:ro
+    ports:
+      - "4533:4533"
+    restart: unless-stopped
