@@ -11,5 +11,6 @@ services:
     volumes:
       - ./config:/config
       - /mnt/Download/Flix:/media:ro
+      - /mnt/Download/YouTube:/youtube:ro
     devices:
       - /dev/dri:/dev/dri
