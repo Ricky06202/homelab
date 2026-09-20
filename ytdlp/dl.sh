@@ -16,6 +16,9 @@ run() {
       --format "bv*[height<=720]+ba/b" \
       --merge-output-format mp4 \
       --output "/downloads/%(channel)s/%(upload_date)s %(title)s [%(id)s].%(ext)s" \
+      --write-info-json \
+      --write-thumbnail \
+      --convert-thumbnails jpg \
       --embed-thumbnail \
       --embed-metadata \
       --limit-rate 5M -i --newline >> "$LOG" 2>&1
