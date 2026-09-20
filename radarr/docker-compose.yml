@@ -9,7 +9,7 @@ services:
     volumes:
       - ./config:/config
       - /mnt/Download/descargas:/downloads
-      - /mnt/Datos/Flix/peliculas:/peliculas
+      - /mnt/Download/Flix/peliculas:/peliculas
     ports:
       - "7878:7878"
     restart: unless-stopped

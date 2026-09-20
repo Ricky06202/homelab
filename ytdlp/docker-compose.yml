@@ -1,0 +1,12 @@
+services:
+  yt-dlp:
+    image: jauderho/yt-dlp:latest
+    container_name: yt-dlp
+    restart: unless-stopped
+    environment:
+      - TZ=America/Montevideo
+    volumes:
+      - ./dl.sh:/opt/dl.sh:ro
+      - ./channels.txt:/opt/channels.txt:ro
+      - /mnt/Download/YouTube:/downloads
+    entrypoint: ["/bin/sh", "/opt/dl.sh"]

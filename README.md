@@ -23,6 +23,10 @@
 
 > Nota: NPM e Immich corren como **Apps nativas de TrueNAS (`ix-*`)**, no por compose propio — por eso no tienen compose en este repo. NPM: el `database.sqlite` (rutas) vive en `/mnt/.ix-apps/app_configs/nginx-proxy-manager/`.
 
+## YouTube offline (`ytdlp/`)
+
+Container `yt-dlp` (imagen `jauderho/yt-dlp`, se auto-actualiza) descarga automáticamente los canales listados en `ytdlp/channels.txt` (editable, va al git). Baja solo los **últimos 7 días** de videos nuevos, máx 5 por canal, ≤720p, a `/mnt/Download/YouTube/<canal>/`. Cron diario a las **05:30**. Para cambiar de canal: editá `channels.txt` y `docker compose up -d` (no hace falta reiniciar el flujo: la corrida próxima lo usa).
+
 ## Servicio → puerto directo (sin proxy, mismo host)
 
 | Servicio | URL directa |
