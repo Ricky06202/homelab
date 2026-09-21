@@ -17,6 +17,7 @@
 | `indexadores.rumbo` | `9696` | Prowlarr | no |
 | `descargas.rumbo` | `8086` | qBittorrent | sí |
 | `musica.rumbo` | `4533` | Navidrome | no |
+| `musicaarr.rumbo` | `8686` | Lidarr | no |
 | `casa2.rumbo` | `8123` | Home Assistant | sí |
 | `pedidos.rumbo` | `5055` | Jellyseerr (pendiente) | sí |
 | `status.rumbo` | `3010` | Homepage | no |
@@ -26,6 +27,8 @@
 ## YouTube offline (`ytdlp/`)
 
 Container `yt-dlp` (imagen `jauderho/yt-dlp`, se auto-actualiza) descarga automáticamente los canales listados en `ytdlp/channels.txt` (editable, va al git). Baja solo los **últimos 7 días** de videos nuevos, máx 5 por canal, ≤720p, a `/mnt/Download/YouTube/<canal>/`. Cron diario a las **05:30**. Para cambiar de canal: editá `channels.txt` y `docker compose up -d` (no hace falta reiniciar el flujo: la corrida próxima lo usa).
+
+> Para **ver** la descarga: Jellyfin ya monta `/mnt/Download/YouTube:/youtube:ro`; solo falta agregar una librería apuntando a `/youtube` en el dashboard de Jellyfin (Jellyfin > Dashboard > Media Libraries > Add).
 
 ## Servicio → puerto directo (sin proxy, mismo host)
 
@@ -37,5 +40,6 @@ Container `yt-dlp` (imagen `jauderho/yt-dlp`, se auto-actualiza) descarga autom�
 | Prowlarr | `http://192.168.2.90:9696` |
 | Radarr | `http://192.168.2.90:7878` |
 | Sonarr | `http://192.168.2.90:8989` |
-| MeTube | `http://192.168.2.90:8085` |
+| Lidarr | `http://192.168.2.90:8686` |
+
 | Homepage | `http://192.168.2.90:3010` |
