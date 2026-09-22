@@ -10,7 +10,8 @@ services:
       - "8096:8096"
     volumes:
       - ./config:/config
-      - /mnt/Download/Flix:/media:ro
+      - /mnt/Download/Flix/series:/series:ro
+      - /mnt/Download/Flix/peliculas:/peliculas:ro
       - /mnt/Download/YouTube:/youtube:ro
     devices:
       - /dev/dri:/dev/dri

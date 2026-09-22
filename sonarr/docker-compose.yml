@@ -9,6 +9,7 @@ services:
     volumes:
       - ./config:/config
       - /mnt/Download/descargas:/downloads
+      - /mnt/Download/Flix:/flix
       - /mnt/Download/Flix/series:/series
     ports:
       - "8989:8989"
