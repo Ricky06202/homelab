@@ -11,7 +11,9 @@ services:
     volumes:
       - ./config:/config
       - /mnt/Download/Flix/series:/series:ro
+      - /mnt/Download/Flix/series-espanol:/series-espanol:ro
       - /mnt/Download/Flix/peliculas:/peliculas:ro
+      - /mnt/Download/Flix/peliculas-espanol:/peliculas-espanol:ro
       - /mnt/Download/YouTube:/youtube:ro
     devices:
       - /dev/dri:/dev/dri

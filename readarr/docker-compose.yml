@@ -1,0 +1,19 @@
+services:
+  readarr:
+    # Readarr upstream RETIRADO (2025): su metadata (api.bookinfo.club) murio.
+    # Fork mantenido iuliandita/readarr: misma base LSIO, defaults a
+    # https://api.bookinfo.pro (espejo rreading-glasses). Override en
+    # Settings -> Development -> Metadata Source.
+    image: ghcr.io/iuliandita/readarr:develop
+    container_name: readarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Montevideo
+    volumes:
+      - ./config:/config
+      - /mnt/Download/Flix:/flix
+      - /mnt/Download/Flix/libros:/books
+    ports:
+      - "8787:8787"
+    restart: unless-stopped

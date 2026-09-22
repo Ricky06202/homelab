@@ -1,0 +1,40 @@
+# Espejo local de metadatos para Readarr (rreading-glasses, Goodreads).
+# Readarr upstream quedo retirado: el espejo publico api.bookinfo.pro es
+# lento/flaky; este local evita depender de el. Leer h&aacute;bitos:
+# /api/v1/config/development -> metadataSource=http://192.168.2.90:8788
+services:
+  rreading-glasses:
+    image: blampe/rreading-glasses:latest
+    pull_policy: always
+    container_name: rreading-glasses
+    hostname: rreading-glasses
+    entrypoint: ["/main", "serve"]
+    command:
+      - --upstream=www.goodreads.com
+      - --verbose
+    restart: always
+    mem_limit: 256m
+    environment:
+      POSTGRES_HOST: rreading-glasses-db
+      POSTGRES_DATABASE: rreading-glasses
+      POSTGRES_USER: rreading-glasses
+      POSTGRES_PASSWORD: ${RRG_DB_PASSWORD}
+    depends_on:
+      - rreading-glasses-db
+    ports:
+      - "8788:8788"
+
+  rreading-glasses-db:
+    image: postgres:17
+    container_name: rreading-glasses-db
+    restart: always
+    mem_limit: 384m
+    environment:
+      POSTGRES_USER: rreading-glasses
+      POSTGRES_PASSWORD: ${RRG_DB_PASSWORD}
+      POSTGRES_DB: rreading-glasses
+    volumes:
+      - rreading_glasses_data:/var/lib/postgresql/data
+
+volumes:
+  rreading_glasses_data:

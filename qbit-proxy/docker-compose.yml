@@ -1,0 +1,16 @@
+# Shim nginx (openresty) para qBittorrent: Readarr (retirado, cliente viejo)
+# necesita HTTP 200 con "Ok." en el login; qBittorrent 5.x responde 204.
+# Solo reescribe esa respuesta; el resto pasa tal cual.
+services:
+  qbit-proxy:
+    image: openresty/openresty:alpine
+    container_name: qbit-proxy
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Montevideo
+    volumes:
+      - ./nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf:ro
+    ports:
+      - "8091:8091"
+    restart: unless-stopped

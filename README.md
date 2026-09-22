@@ -30,6 +30,14 @@ Container `yt-dlp` (imagen `jauderho/yt-dlp`, se auto-actualiza) descarga autom�
 
 > Para **ver** la descarga: Jellyfin ya monta `/mnt/Download/YouTube:/youtube:ro`; solo falta agregar una librería apuntando a `/youtube` en el dashboard de Jellyfin (Jellyfin > Dashboard > Media Libraries > Add).
 
+## Español vs general (`arr-router/`)
+
+Las colecciones están separadas por idioma con carpetas propias:
+
+- Datos: `/mnt/Download/Flix/series` + `peliculas` (general) · `series-espanol` + `peliculas-espanol` (ES)
+- Jellyfin: 4 librerías (Series, Series en Español, Películas, Películas en Español) con monitor en tiempo real activado
+- Sonarr/Radarr: root folders id 1 = general, id 2 = ES. Al agregar un título se elige la raíz; los releases que Radarr/Sonarr bajan a la general **con audio español** (aunque sea dual) los mueve a la raíz ES `arr-router/router.py` (cron TrueNAS cada hora: `python3 homelab/arr-router/router.py --run`). Detección: mediaInfo de la app + tags de audio vía ffprobe (jellyfin) + nombre de archivo. Dry-run: correr sin `--run`.
+
 ## Servicio → puerto directo (sin proxy, mismo host)
 
 | Servicio | URL directa |
