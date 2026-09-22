@@ -8,7 +8,7 @@ services:
       - ND_BASEURL=
     volumes:
       - ./data:/data
-      - /mnt/Download/Musica:/music:ro
+      - /mnt/Download/Flix/musica:/music:ro
     ports:
       - "4533:4533"
     restart: unless-stopped

@@ -15,3 +15,6 @@ services:
       - /mnt/Download/YouTube:/youtube:ro
     devices:
       - /dev/dri:/dev/dri
+    group_add:
+      - "44"
+      - "107"

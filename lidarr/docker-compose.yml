@@ -8,8 +8,8 @@ services:
       - TZ=America/Montevideo
     volumes:
       - ./config:/config
-      - /mnt/Download/descargas:/downloads
-      - /mnt/Download/Musica:/music
+      - /mnt/Download/Flix:/flix
+      - /mnt/Download/Flix/musica:/music
     ports:
       - "8686:8686"
     restart: unless-stopped
